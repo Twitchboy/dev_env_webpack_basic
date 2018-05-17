@@ -114,9 +114,8 @@ npm i html-webpack-plugin -D
 
 然后在 webpack 配置中，将 html-webpack-plugin 添加到 plugins 列表中：
 
-```json
+```js
 module.exports = {
-  // ...
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html', // 配置输出文件名和路径
@@ -134,11 +133,10 @@ module.exports = {
 
 我们编写 CSS，并且希望使用 webpack 来进行构建，为此，需要在配置中引入 loader 来解析和处理 CSS 文件：
 
-```json
+```js
 module.exports = {
   module: {
     rules: [
-      // ...
       {
         test: /\.css/,
         include: [
@@ -172,7 +170,7 @@ import "./css/index.css"
 
 extract-text-webpack-plugin 这个插件在笔者写作时并未发布支持 webpack 4.x 的正式版本，所以安装的时候需要指定使用它的 alpha 版本：`npm install extract-text-webpack-plugin@next -D` 或者 `yarn add extract-text-webpack-plugin@next -D`。如果你用的是 webpack 3.x 版本，直接用 extract-text-webpack-plugin 现有的版本即可。
 
-```json
+```js
 # 安装
 npm i extract-text-webpack-plugin -D
 
@@ -207,7 +205,7 @@ module.exports = {
 
 我们需要在上面的 webpack 配置中，添加一个配置来支持解析后缀为 .less 的文件：
 
-```json
+```js
 # 安装
 npm i less less-loader -D
 
@@ -238,7 +236,7 @@ module.exports = {
 
 file-loader 可以用于处理很多类型的文件，它的主要作用是直接输出文件，把构建后的文件路径返回。配置很简单，在 `rules` 中添加一个字段，增加图片类型文件的解析配置：
 
-```json
+```js
 # 安装
 npm i file-loader -D
 
@@ -265,7 +263,7 @@ module.exports = {
 
 [Babel](https://babeljs.cn/) 是一个让我们能够使用 ES 新特性的 JS 编译工具，我们可以在 webpack 中配置 Babel，以便使用 ES6、ES7 标准来编写 JS 代码。
 
-```json
+```js
 # 安装
 npm i babel-loader babel-core babel-preset-env -D
 
