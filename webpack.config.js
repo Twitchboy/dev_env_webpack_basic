@@ -29,7 +29,7 @@ module.exports = {
             use: 'babel-loader'
         },
         {
-            test: /\.less$/,
+            test: /\.(less|css)$/,
             // 因为这个插件需要干涉模块转换的内容，所以需要使用它对应的 loader
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
@@ -54,6 +54,17 @@ module.exports = {
   resolve: {
     // 解析模块请求的选项
     // （不适用于对 loader 解析）
+
+    alias: {
+        utils: path.resolve(__dirname, 'src/utils'), // 模糊匹配
+        log$: path.resolve(__dirname, 'src/utils/log.js') // 精准匹配 log$ 只匹配 log
+    },
+
+    extensions: ['.js', '.json', '.jsx', '.css', '.less'], // 自动解析后缀
+
+    modules: [
+        path.resolve(__dirname, 'node_modules'), // 指定当前目录下的 node_modules 优先查找
+    ]
   },
 
   plugins: [
